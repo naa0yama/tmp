@@ -66,7 +66,7 @@ jobs:
         id: get_branch
         run: echo ::set-output name=BRANCH::${GITHUB_REF/refs\/heads\//}
 
-      - name: git clone upstream
+      - name: git settings
         run: |
           set -x
 
@@ -82,10 +82,6 @@ jobs:
                                 # (but actions/checkout@v2 can also be instructed
                                 # to fetch all git depth right from the start)
 
-          # Add the repo which you forked to the remote and name it as "upstream"
-          git fetch -v
-          git clone "${REPO_FORK}" "./${SOURCE_DIR_NAME}"
-
       - name: checkout -b
         run: |
           set -x
@@ -96,6 +92,14 @@ jobs:
           else
             git checkout -b "${BRUNCH_NAME}"
           fi
+
+      - name: git clone upstream
+        run: |
+          set -x
+
+          # Add the repo which you forked to the remote and name it as "upstream"
+          git fetch -v
+          git clone "${REPO_FORK}" "./${SOURCE_DIR_NAME}"
 
       - name: pyproject.toml merge generate
         run: |
