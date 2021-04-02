@@ -150,7 +150,7 @@ jobs:
                 repo: context.repo.repo
             }
             const pull_params = {
-                head: "ref/head/" + process.env.BRUNCH_NAME,
+                head: context.repo.owner + ':' + process.env.BRUNCH_NAME,
                 base: "master",
                 ...common_params
             }
