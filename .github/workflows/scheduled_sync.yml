@@ -123,7 +123,7 @@ jobs:
 
           for add_path in ${SYNC_FILES_OR_DIRS[@]}
           do
-            echo "\n\n"
+            echo -e "\n\n"
             echo "add_path: ${add_path}"
             if test "pyproject.toml" != "${add_path}"
             then
@@ -162,13 +162,13 @@ jobs:
             console.log("call pulls.list:")
             console.log(pulls_list_params)
 
-            // pr-copy ブランチをheadとするPRの一覧を取得する
+            // process.env.BRUNCH_NAME ブランチをheadとするPRの一覧を取得する
             github.pulls.list(pulls_list_params).then(list_res => {
                 // 該当するPRがなければPRを作成する
                 // 既にPRが立てられている場合はpushした時点でPRに反映されるので何もしなくて良い
                 if (list_res.data.length === 0) {
                     const pulls_create_params = {
-                        title: process.env.REPO_FORK + " の差分を反映",
+                        title: "fork 元の差分を反映",
                         ...pull_params
                     }
                     console.log("call pulls.create:")
