@@ -173,8 +173,6 @@ jobs:
                     }
                     console.log("call pulls.create:")
                     console.log(pulls_create_params)
-                    const pulls_res = github.pulls.create(pulls_create_params)
-                    console.log("pull_res:")
-                    console.log(pull_res)
+                    github.pulls.create(pulls_create_params)
                 }
             })
