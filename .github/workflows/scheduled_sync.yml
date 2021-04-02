@@ -41,6 +41,7 @@ jobs:
       REPO_FORK: https://github.com/naa0yama/pythonboilerplate.git
       BRUNCH_NAME: upstream-config-merge
       SOURCE_DIR_NAME: upstream
+      ORIGIN_DEFAULT_BRUNCH: main
 
     steps:
       - uses: actions/checkout@v2
@@ -151,7 +152,7 @@ jobs:
             }
             const pull_params = {
                 head: context.repo.owner + ':' + process.env.BRUNCH_NAME,
-                base: "master",
+                base: process.env.ORIGIN_DEFAULT_BRUNCH,
                 ...common_params
             }
             const pulls_list_params = {
