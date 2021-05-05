@@ -29,7 +29,7 @@ jupyter-client      = "5.3.5"
 pip                 = "20.0.2"
 pytest              = "6.1.2"
 pytest-cov          = "2.10.1"
-tox                 = "3.20.1"
+tox                 = "3.23.1"
 
 [tool.black]
 line-length                = 99
